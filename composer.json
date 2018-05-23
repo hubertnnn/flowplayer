@@ -1,0 +1,29 @@
+{
+    "name": "hubertnnn/laravel-flowplayer",
+    "description": "Flowplayer platform integration for laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hubert Narożny",
+            "email": "hubertnnn@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "HubertNNN\\FlowPlayer\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HubertNNN\\FlowPlayer\\Integration\\Laravel\\FlowPlayerServiceProvider"
+            ],
+            "aliases": {
+                "FlowPlayer": "HubertNNN\\FlowPlayer\\Integration\\Laravel\\FlowPlayerFacade"
+            }
+        }
+    }
+}
