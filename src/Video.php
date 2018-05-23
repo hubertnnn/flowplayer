@@ -39,9 +39,9 @@ class Video
             $source = \GuzzleHttp\json_decode($response->getBody());
         }
 
-        $this->adTag = $source->adTag;
-        $this->categoryId = $source->categoryId;
-        $this->createdAt = $source->creates_at;
+        $this->adTag = $source->adtag;
+        $this->categoryId = $source->categoryid;
+        $this->createdAt = $source->created_at;
         $this->description = $source->description;
         $this->duration = $source->duration;
         $this->externalVideoId = $source->externalvideoid;
@@ -52,9 +52,9 @@ class Video
         $this->published = $source->published;
         $this->episode = $source->episode;
         $this->publishedAt = $source->published_at;
-        $this->siteId = $source->siteId;
+        $this->siteId = $source->siteid;
         $this->transcodingStatus = $source->state;
-        $this->tags = $source->tage;
+        $this->tags = $source->tags;
         $this->updatedAt = $source->updated_at;
         $this->userId = $source->userid;
         $this->views = $source->views;
