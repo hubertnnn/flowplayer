@@ -2,7 +2,7 @@
 
 namespace HubertNNN\FlowPlayer;
 
-class Video
+class Video implements \HubertNNN\FlowPlayer\Contracts\Video
 {
     /** @var \HubertNNN\FlowPlayer\Contracts\FlowPlayerService */
     protected $service;
