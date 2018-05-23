@@ -59,7 +59,7 @@ class FlowPlayerService
 
     public function getApiKey()
     {
-        return $this->siteId;
+        return $this->apiKey;
     }
 
     public function getUserId()
