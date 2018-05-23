@@ -32,7 +32,7 @@ class SearchModule
         $response = \GuzzleHttp\json_decode($response->getBody());
 
         $output = [];
-        foreach ($response->version as $videoData) {
+        foreach ($response->videos as $videoData) {
 
             /** @var Video $video */
             $video = $this->service->getVideo($videoData->id);
