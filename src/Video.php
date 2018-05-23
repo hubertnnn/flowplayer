@@ -2,12 +2,8 @@
 
 namespace HubertNNN\FlowPlayer;
 
-use HubertNNN\FlowPlayer\Utils\MagicGetterTrait;
-
 class Video
 {
-    use MagicGetterTrait;
-
     /** @var \HubertNNN\FlowPlayer\Contracts\FlowPlayerService */
     protected $service;
 
