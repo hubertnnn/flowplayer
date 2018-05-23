@@ -173,7 +173,7 @@ class Video
         $values = $this->forUpdate;
         $prepared = [];
 
-        function prepareField ($field, $targetField, $type = 'text') use($values, &$prepared) {
+        $prepareField = function ($field, $targetField, $type = 'text') use($values, &$prepared) {
             if(!isset($values[$field]))
                 return;
 
@@ -195,13 +195,13 @@ class Video
             throw new \InvalidArgumentException('Unknown type: ' . $type);
         };
 
-        prepareField('userId', 'userid');
-        prepareField('tags', 'tags', 'array');
-        prepareField('name', 'name');
-        prepareField('description', 'description');
-        prepareField('categoryId', 'categoryid');
-        prepareField('publishedAt', 'publish_at', 'date');
-        prepareField('published', 'published');
+        $prepareField('userId', 'userid');
+        $prepareField('tags', 'tags', 'array');
+        $prepareField('name', 'name');
+        $prepareField('description', 'description');
+        $prepareField('categoryId', 'categoryid');
+        $prepareField('publishedAt', 'publish_at', 'date');
+        $prepareField('published', 'published');
 
         // -------------------------------------------------------------------------------------------------------------
 
