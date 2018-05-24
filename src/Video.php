@@ -145,7 +145,22 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
     public function __get($name)
     {
         $loaders = [
-            'loadPrivateData' => [
+            'public' => [
+                'name',
+                'description',
+                'episode',
+                'duration',
+                'views',
+                'userId',
+                'categoryId',
+                'siteId',
+                'createdAt',
+                'updatedAt',
+                'publishedAt',
+                'images',
+                'tags',
+            ],
+            'private' => [
                 'name',
                 'description',
                 'episode',
@@ -170,7 +185,17 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
 
         foreach ($loaders as $loader => $variables) {
             if(in_array($name, $variables)) {
-                call_user_func([$this, $loader]);
+                $variable = $loader . 'Loaded';
+                if($this->$variable) {
+                    return $this->$name;
+                }
+            }
+        }
+
+        foreach ($loaders as $loader => $variables) {
+            if(in_array($name, $variables)) {
+                $method = 'load' . ucfirst($loader) . 'Data';
+                call_user_func([$this, $method]);
                 return $this->$name;
             }
         }
