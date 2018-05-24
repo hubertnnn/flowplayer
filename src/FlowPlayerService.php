@@ -21,9 +21,9 @@ class FlowPlayerService
     // -----------------------------------------------------------------------------------------------------------------
     // Public api
 
-    public function getVideo($id)
+    public function getVideo($id, $autoload = false)
     {
-        return new Video($this, $id);
+        return new Video($this, $id, $autoload);
     }
 
     public function listVideos($page = 1, $limit = 20)
