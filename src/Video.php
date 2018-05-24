@@ -73,25 +73,28 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
             $source = \GuzzleHttp\json_decode($response->getBody());
         }
 
-        $this->adTag = $source->adtag;
+        // Public
         $this->categoryId = $source->categoryid;
         $this->createdAt = $source->created_at;
+        $this->publishedAt = $source->published_at;
+        $this->updatedAt = $source->updated_at;
         $this->description = $source->description;
         $this->duration = $source->duration;
-        $this->externalVideoId = $source->externalvideoid;
         $this->images = $source->images; //ToArray
-        $this->mediaFiles = $source->mediafiles;
         $this->name = $source->name;
-        $this->noAds = $source->noads;
-        $this->published = $source->published;
         $this->episode = $source->episode;
-        $this->publishedAt = $source->published_at;
         $this->siteId = $source->siteid;
-        $this->transcodingStatus = $source->state;
         $this->tags = $source->tags;
-        $this->updatedAt = $source->updated_at;
         $this->userId = $source->userid;
         $this->views = $source->views;
+
+        // Pirvate only
+        $this->adTag = $source->adtag;
+        $this->externalVideoId = $source->externalvideoid;
+        $this->mediaFiles = $source->mediafiles;
+        $this->noAds = $source->noads;
+        $this->published = $source->published;
+        $this->transcodingStatus = $source->state;
     }
 
     public function loadAnalytics()
