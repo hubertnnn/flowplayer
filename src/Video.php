@@ -283,6 +283,22 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
 
     public function delete()
     {
+        $client = $this->service->getGuzzle();
+        $siteId = $this->service->getSiteId();
+        $apiKey = $this->service->getApiKey();
+        $userId = $this->service->getUserId();
+
+        $url = "https://web.lemonwhale.com/web/video/delete/video.json";
+        $data = [
+            'siteid' => $siteId,
+            'api_key' => $apiKey,
+            'userId' => $userId,
+            'id' => $this->id,
+        ];
+
+        $client->delete($url, ['json' => $data]);
+
+
         //TODO: Implement me after bug in flowplayer api will get fixed
     }
 }
