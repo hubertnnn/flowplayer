@@ -29,6 +29,8 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
         if($this->privateLoaded)
             return;
 
+        $this->privateLoaded = true;
+
         if($source === null) {
             $client = $this->service->getGuzzle();
             $apiKey = $this->service->getApiKey();
