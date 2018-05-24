@@ -14,10 +14,14 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
 
     protected $id;
 
-    public function __construct($service, $id)
+    public function __construct($service, $id, $autoload = false)
     {
         $this->service = $service;
         $this->id = $id;
+
+        if($autoload) {
+            $this->loadPrivateData();
+        }
     }
 
     public function loadPrivateData($source = null)
