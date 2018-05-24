@@ -7,6 +7,7 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
     /** @var \HubertNNN\FlowPlayer\Contracts\FlowPlayerService */
     protected $service;
 
+    protected $publicLoaded = false;
     protected $privateLoaded = false;
     protected $analyticsLoaded = false;
 
@@ -22,6 +23,37 @@ class Video implements \HubertNNN\FlowPlayer\Contracts\Video
         if($autoload) {
             $this->loadPrivateData();
         }
+    }
+
+    public function loadPublicData($source = null)
+    {
+        if($this->publicLoaded)
+            return;
+
+        $this->publicLoaded = true;
+
+        if($source === null) {
+            $client = $this->service->getGuzzle();
+            $videoId = $this->id;
+
+            $url = "https://ljsp.lwcdn.com/web/public/video/$videoId.json";
+            $response = $client->get($url);
+            $source = \GuzzleHttp\json_decode($response->getBody());
+        }
+
+        $this->categoryId = $source->categoryid;
+        $this->createdAt = $source->created_at;
+        $this->publishedAt = $source->published_at;
+        $this->updatedAt = $source->updated_at;
+        $this->description = $source->description;
+        $this->duration = $source->duration;
+        $this->images = $source->images; //ToArray
+        $this->name = $source->name;
+        $this->episode = $source->episode;
+        $this->siteId = $source->siteid;
+        $this->tags = $source->tags;
+        $this->userId = $source->userid;
+        $this->views = $source->views;
     }
 
     public function loadPrivateData($source = null)
